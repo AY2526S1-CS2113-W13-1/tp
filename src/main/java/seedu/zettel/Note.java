@@ -18,12 +18,11 @@ public class Note {
     private String archiveName;
     private List<String> logs; // history/log data
 
-    // Static counter for tracking total notes
-    private static int NUMBER_OF_NOTES = 0;
-
     // Date formatter for toString method
     private static final DateTimeFormatter DATE_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.systemDefault());
+    // Static counter for tracking total notes
+    private static int NUMBER_OF_NOTES = 0;
 
     // Constructor for creating a new note
     public Note(String id, String title, String filename, String body, Instant createdAt, Instant modifiedAt) {
