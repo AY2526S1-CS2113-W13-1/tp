@@ -13,7 +13,7 @@ import seedu.zettel.commands.PinNoteCommand;
 
 public class PinNoteCommandTest {
     @Test
-    public void execute_validPinNoteCommand_noteIsPinned() throws InterruptedException {
+    public void execute_validPinNoteCommand_noteIsPinned() throws Exception {
         ArrayList<Note> notes = new ArrayList<>();
         notes.add(new Note("id-0", "Title 0", "file0.txt", "Body 0", Instant.now(), Instant.now()));
         notes.add(new Note("id-1", "Title 1", "file1.txt", "Body 1", Instant.now(), Instant.now()));
@@ -29,7 +29,7 @@ public class PinNoteCommandTest {
     }       
 
     @Test
-    void execute_unpinsNoteAtValidIndex_updatesPinnedAndModifiedAt() throws InterruptedException {
+    void execute_unpinsNoteAtValidIndex_updatesPinnedAndModifiedAt() throws Exception {
         ArrayList<Note> notes = new ArrayList<>();
         notes.add(new Note("id-0", "Title0", "file0.txt", "Body0",
                 Instant.now(), Instant.now()));
