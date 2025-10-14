@@ -7,10 +7,7 @@ import seedu.zettel.UI;
 
 import java.util.ArrayList;
 
-public class NewNoteCommand extends Command {
-    public NewNoteCommand(String title, String body) {
-    }
-
+public class ExitCommand extends Command {
     @Override
     public Command execute(ArrayList<Note> notes, UI ui, Storage storage) throws ZettelException {
         return null;
