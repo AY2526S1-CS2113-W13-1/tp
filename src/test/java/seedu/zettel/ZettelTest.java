@@ -22,13 +22,11 @@ class ZettelTest {
 
     @BeforeEach
     void setUp() throws Exception {
-        // Ensure data directory exists before each test
         Files.createDirectories(DATA_DIR);
     }
 
     @AfterEach
     void tearDown() {
-        // Clean up data files after each test
         try {
             Files.deleteIfExists(NOTES_FILE);
             Files.deleteIfExists(DATA_DIR);
@@ -49,7 +47,6 @@ class ZettelTest {
     void constructor_createsUIAndStorageAndNotesList() {
         Zettel zettel = new Zettel();
 
-        // Use reflection to access private fields
         try {
             var uiField = Zettel.class.getDeclaredField("ui");
             var storageField = Zettel.class.getDeclaredField("storage");

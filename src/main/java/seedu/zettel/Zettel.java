@@ -53,7 +53,6 @@ public class Zettel {
 
         while (isRunning) {
             try {
-                // Read command with timeout
                 Future<String> future = executor.submit(() -> ui.readCommand());
                 String userInput;
 
@@ -65,28 +64,26 @@ public class Zettel {
                     break;
                 }
 
-                // Skip empty input
                 if (userInput.trim().isEmpty()) {
                     continue;
                 }
 
-                // Parse the command
                 Command command = Parser.parse(userInput);
 
-                // Check if it's an exit command
                 if (command.isExit()) {
                     isRunning = false;
                     break;
                 }
 
-                // Execute the command
                 command.execute(notes, tags, ui, storage);
 
-                // Save notes after each command (auto-save)
                 storage.save(notes);
+
+                ui.printLine();
 
             } catch (ZettelException e) {
                 ui.showError(e.getMessage());
+                ui.printLine();
             } catch (Exception e) {
                 ui.showError("An unexpected error occurred: " + e.getMessage());
                 break;
