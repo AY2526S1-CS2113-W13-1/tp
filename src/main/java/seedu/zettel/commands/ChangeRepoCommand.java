@@ -42,13 +42,19 @@ public class ChangeRepoCommand extends Command {
     public void execute(ArrayList<Note> notes, List<String> tags, UI ui, Storage storage)
             throws ZettelException {
 
+
         // Validate that the repository exists
         List<String> availableRepos = storage.getRepoList();
         if (!availableRepos.contains(repoName)) {
             throw new InvalidRepoException(
-                    "Repository '" + repoName + "' does not exist. " +
-                            "Use 'init " + repoName + "' to create it first."
+                    "Repository '" + repoName + "' does not exist. " + "Use 'init " + repoName + "' to create it first."
             );
+        }
+
+        // Check if already in the same repository
+        String currentRepo = storage.readCurrRepo();
+        if (repoName.equals(currentRepo)) {
+            throw new InvalidRepoException("Already on " + repoName);
         }
 
         // Change to the new repository

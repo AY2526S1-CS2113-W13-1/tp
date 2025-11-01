@@ -1,4 +1,4 @@
-package seedu.zettel;
+package parser;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,7 +11,8 @@ import seedu.zettel.commands.DeleteTagFromNoteCommand;
 import seedu.zettel.commands.DeleteTagGloballyCommand;
 import seedu.zettel.commands.EditNoteCommand;
 import seedu.zettel.commands.ExitCommand;
-import seedu.zettel.commands.FindNoteCommand;
+import seedu.zettel.commands.FindNoteByBodyCommand;
+import seedu.zettel.commands.FindNoteByTitleCommand;
 import seedu.zettel.commands.HelpCommand; // Added import
 import seedu.zettel.commands.InitCommand;
 import seedu.zettel.commands.LinkBothNotesCommand;
@@ -32,6 +33,7 @@ import seedu.zettel.exceptions.EmptyDescriptionException;
 import seedu.zettel.exceptions.InvalidFormatException;
 import seedu.zettel.exceptions.InvalidInputException;
 import seedu.zettel.exceptions.ZettelException;
+import seedu.zettel.parser.Parser;
 
 /**
  * Unit tests for the Parser class.
@@ -184,13 +186,30 @@ class ParserTest {
 
     @Test
     void testParseFindWithSearchTermReturnsFindNoteCommand() throws ZettelException {
-        Command command = Parser.parse("find test");
-        assertInstanceOf(FindNoteCommand.class, command);
+        Command command = Parser.parse("find-note-by-body test");
+        assertInstanceOf(FindNoteByBodyCommand.class, command);
     }
 
     @Test
     void testParseFindWithoutSearchTermThrowsEmptyDescriptionException() {
-        assertThrows(EmptyDescriptionException.class, () -> Parser.parse("find"));
+        assertThrows(EmptyDescriptionException.class, () -> Parser.parse("find-note-by-body"));
+    }
+
+    @Test
+    void testParseFindByTitleWithSearchTermReturnsFindNoteByTitleCommand() throws ZettelException {
+        Command command = Parser.parse("find-note-by-title test");
+        assertInstanceOf(FindNoteByTitleCommand.class, command);
+    }
+
+    @Test
+    void testParseFindByTitleWithMultipleTermsReturnsFindNoteByTitleCommand() throws ZettelException {
+        Command command = Parser.parse("find-note-by-title title1 title2");
+        assertInstanceOf(FindNoteByTitleCommand.class, command);
+    }
+
+    @Test
+    void testParseFindByTitleWithoutSearchTermThrowsEmptyDescriptionException() {
+        assertThrows(EmptyDescriptionException.class, () -> Parser.parse("find-note-by-title"));
     }
 
     // ==================== Link Command Tests ====================
@@ -597,15 +616,15 @@ class ParserTest {
     }
 
     @Test
-    void testParseNewTagWithoutTagThrowsInvalidFormatException() {
+    void testParseNewTagWithoutTagThrowsEmptyDescriptionException() {
         ZettelException ex = assertThrows(ZettelException.class, () -> Parser.parse("new-tag"));
-        assertTrue(ex.getMessage().contains("new-tag"));
+        assertTrue(ex.getMessage().contains("Tag"));
     }
 
     @Test
     void testParseNewTagWithEmptyTagThrowsEmptyDescriptionException() {
         ZettelException ex = assertThrows(ZettelException.class, () -> Parser.parse("new-tag "));
-        assertTrue(ex.getMessage().contains("tag"));
+        assertTrue(ex.getMessage().contains("Tag"));
     }
 
     @Test

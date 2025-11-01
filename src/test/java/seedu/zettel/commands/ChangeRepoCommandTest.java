@@ -80,4 +80,20 @@ public class ChangeRepoCommandTest {
         assertTrue(notes.isEmpty(), "Notes list should be cleared and reloaded");
         assertTrue(tags.isEmpty(), "Tags list should be cleared and reloaded");
     }
+
+    @Test
+    void execute_sameRepo_throwsInvalidRepoException() {
+        ChangeRepoCommand switchCmd = new ChangeRepoCommand("projectX");
+        assertDoesNotThrow(() -> switchCmd.execute(notes, tags, ui, storage));
+
+        ChangeRepoCommand sameCCmd = new ChangeRepoCommand("projectX");
+
+        InvalidRepoException ex = assertThrows(
+                InvalidRepoException.class,
+                () -> sameCCmd.execute(notes, tags, ui, storage)
+        );
+
+        assertTrue(ex.getMessage().contains("Already on"));
+        assertTrue(ex.getMessage().contains("projectX"));
+    }
 }

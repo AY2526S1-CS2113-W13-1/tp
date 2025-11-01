@@ -3,7 +3,6 @@ package seedu.zettel.commands;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 import seedu.zettel.Note;
 import seedu.zettel.UI;
@@ -18,8 +17,6 @@ import seedu.zettel.storage.Storage;
  * Pinned notes can be listed separately for quick access.
  */
 public class PinNoteCommand extends Command {
-    private static final Logger logger = Logger.getLogger(PinNoteCommand.class.getName());
-
     private final boolean isPin;
     private final String noteId;
 
@@ -45,8 +42,6 @@ public class PinNoteCommand extends Command {
      */
     @Override
     public void execute(ArrayList<Note> notes, List<String> tags, UI ui, Storage storage) throws ZettelException {
-        logger.info("Executing PinNoteCommand for noteId: " + noteId);
-
         // Validation 1: Check if the notes list is empty
         if (notes.isEmpty()) {
             throw new NoNotesException("You have no notes to pin/unpin.");

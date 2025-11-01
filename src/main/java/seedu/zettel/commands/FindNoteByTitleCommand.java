@@ -10,28 +10,28 @@ import seedu.zettel.exceptions.ZettelException;
 import seedu.zettel.storage.Storage;
 
 /**
- * Command to find notes containing a given keyword in their body.
- * Performs a case-insensitive search across all existing notes.
+ * Command to find notes containing given keywords in their title.
+ * Performs a case-insensitive search across all existing notes within the current repository.
  */
-public class FindNoteCommand extends Command{
-    private final String keyword;
+public class FindNoteByTitleCommand extends Command {
+    private final String searchTerms;
 
     /**
-     * Constructs a FindNoteCommand with the specified search keyword.
+     * Constructs a FindNoteByTitleCommand with the specified search terms.
      *
-     * @param keyword The keyword to search for in note body.
+     * @param searchTerms The search terms (can be multiple space-separated strings) to search for in note titles.
      */
-    public FindNoteCommand(String keyword) {
-        this.keyword = keyword;
+    public FindNoteByTitleCommand(String searchTerms) {
+        this.searchTerms = searchTerms;
     }
 
     /**
-     * Executes the find command to search for notes containing the specified keyword.
-     * The search is case-insensitive and matches any note whose body includes the keyword.
+     * Executes the find command to search for notes containing the specified search terms in their title.
+     * The search is case-insensitive and matches any note whose title includes the search terms.
      * Displays the matching notes or a "no results" message if none are found.
      *
      * @param notes   The list of existing notes
-     * @param tags
+     * @param tags    The list of current tags
      * @param ui      The UI instance for user interaction
      * @param storage The storage instance for persistence
      * @throws ZettelException If the notes list is empty
@@ -42,16 +42,21 @@ public class FindNoteCommand extends Command{
             throw new NoNotesException("There are no notes available to search.");
         }
         assert notes != null : "Notes list should not be null";
+        
         ArrayList<Note> matchedNotes = new ArrayList<>();
-        for (Note note: notes) {
-            if (note.getBody().toLowerCase().contains(keyword.toLowerCase())) {
+        String lowerSearchTerms = searchTerms.toLowerCase();
+        
+        for (Note note : notes) {
+            String lowerTitle = note.getTitle().toLowerCase();
+            if (lowerTitle.contains(lowerSearchTerms)) {
                 matchedNotes.add(note);
             }
         }
+        
         if (matchedNotes.isEmpty()) {
             ui.showNoNotesFound();
         } else {
-            ui.showFoundNotes(matchedNotes);
+            ui.showFoundNotesByTitle(matchedNotes, searchTerms);
         }
     }
 }

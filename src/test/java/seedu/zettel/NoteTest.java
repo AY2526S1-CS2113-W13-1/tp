@@ -52,7 +52,6 @@ public class NoteTest {
     @Test
     @DisplayName("Test full constructor for loading a note")
     void testFullConstructor() {
-        List<String> logs = List.of("Log entry 1", "Log entry 2");
         List<String> tags = List.of("Homework");
         Note loadedNote = new Note(id, title, filename, body, createdAt, modifiedAt,
                 true, true, "my-archive", tags);

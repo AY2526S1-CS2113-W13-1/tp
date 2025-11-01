@@ -99,7 +99,7 @@ public class DeleteTagGloballyCommandTest {
         assertFalse(notes.get(0).getTags().contains("java"));
 
         String out = outputStream.toString();
-        assertTrue(out.contains("Confirm deletion of tag 'java'? (y/n)"));
+        assertTrue(out.contains("Confirm deletion of tag 'java'? press y to confirm, any other key to cancel"));
         assertTrue(out.contains("Tag 'java' has been deleted across all notes, globally."));
     }
 
@@ -114,7 +114,7 @@ public class DeleteTagGloballyCommandTest {
         assertTrue(notes.get(1).getTags().contains("python"));
 
         String out = outputStream.toString();
-        assertTrue(out.contains("Confirm deletion of tag 'python'? (y/n)"));
+        assertTrue(out.contains("Confirm deletion of tag 'python'? press y to confirm, any other key to cancel"));
         assertTrue(out.contains("Deletion cancelled"));
     }
 

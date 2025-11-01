@@ -76,10 +76,11 @@ public class UI {
         System.out.println("   delete-tag [-f] <note-id> <tag>   - Delete a tag from a note");
         System.out.println("   delete-tag-globally [-f] <tag>    - Delete a tag from all notes");
         System.out.println("   rename-tag <old-tag> <new-tag>    - Rename a tag globally");
-        System.out.println("   archive <note-id>               - Moves note to archive folder");
-        System.out.println("   unarchive <note-id>             - Moves note out of archive folder");
-        System.out.println("   print-body <note-id>            - Print the body of a note");
-        System.out.println("   find <text>                       - Search for notes");
+        System.out.println("   archive <note-id>                 - Moves note to archive folder");
+        System.out.println("   unarchive <note-id>               - Moves note out of archive folder");
+        System.out.println("   print-body <note-id>              - Print the body of a note");
+        System.out.println("   find-note-by-body <search-terms>  - Search for notes by body content");
+        System.out.println("   find-note-by-title <search-terms> - Search for notes by title");
         System.out.println("   help                              - Show this list of commands");
         System.out.println("   bye                               - Exit the application");
         System.out.println();
@@ -109,7 +110,8 @@ public class UI {
      * @param noteTitle The title of the note to delete.
      */
     public void showDeleteNoteConfirmation(String id, String noteTitle) {
-        System.out.println("Confirm deletion on '" + noteTitle + "', noteID " + id + "? (y/n)");
+        System.out.println("Confirm deletion on '" + noteTitle + "', noteID " + id + 
+                "? press y to confirm, any other key to cancel");
     }
 
     /**
@@ -118,7 +120,7 @@ public class UI {
      * @param tag The tag to delete.
      */
     public void showDeleteTagConfirmation(String tag) {
-        System.out.println("Confirm deletion of tag '" + tag + "'? (y/n)");
+        System.out.println("Confirm deletion of tag '" + tag + "'? press y to confirm, any other key to cancel");
     }
 
     /**
@@ -128,7 +130,8 @@ public class UI {
      * @param noteId The ID of the note to delete.
      */
     public void showDeleteTagFromNoteConfirmation(String tag, String noteId) {
-        System.out.println("Confirm deletion of tag '" + tag + "' on note # '" + noteId + "'? (y/n)");
+        System.out.println("Confirm deletion of tag '" + tag + "' on note # '" + noteId + 
+                "'? press y to confirm, any other key to cancel");
     }
 
 
@@ -226,7 +229,33 @@ public class UI {
      * @param matchedNotes The list of notes matching the search.
      */
     public void showFoundNotes(ArrayList<Note> matchedNotes) {
-        System.out.println("Here are the matching notes in your list:");
+        System.out.println(" Here are the matching notes in your list:");
+        for (int i = 0; i < matchedNotes.size(); i++) {
+            System.out.println(" " + (i + 1) + ". " + matchedNotes.get(i));
+        }
+    }
+
+    /**
+     * Displays a list of notes that match body search terms.
+     *
+     * @param matchedNotes The list of notes matching the search.
+     * @param searchTerms The search terms used for the query.
+     */
+    public void showFoundNotesByBody(ArrayList<Note> matchedNotes, String searchTerms) {
+        System.out.println(" Here are the notes with bodies matching the above:");
+        for (int i = 0; i < matchedNotes.size(); i++) {
+            System.out.println(" " + (i + 1) + ". " + matchedNotes.get(i));
+        }
+    }
+
+    /**
+     * Displays a list of notes that match title search terms.
+     *
+     * @param matchedNotes The list of notes matching the search.
+     * @param searchTerms The search terms used for the query.
+     */
+    public void showFoundNotesByTitle(ArrayList<Note> matchedNotes, String searchTerms) {
+        System.out.println(" Here are the notes with titles matching the above:");
         for (int i = 0; i < matchedNotes.size(); i++) {
             System.out.println(" " + (i + 1) + ". " + matchedNotes.get(i));
         }

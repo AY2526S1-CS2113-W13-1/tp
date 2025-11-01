@@ -35,14 +35,13 @@ public class Note {
     private boolean pinned; // Whether the note is pinned
     private boolean archived; // Whether the note has been archived
     private String archiveName; // Name of the archive the note belongs to
-    private List<String> logs; // History/log data of that individual note
     private List<String> tags; // Tags for the note
     private HashSet<String> outgoingLinks; // note IDs that this note links to
     private HashSet<String> incomingLinks; // note IDs of notes that is linked by this note
 
     /**
      * Constructor for creating a new note by the user.
-     * Initializes with default values for pinned, archived, and logs.
+     * Initializes with default values for pinned and archived.
      *
      * @param id The unique 8-character hash-based ID
      * @param title The title of the note
@@ -206,9 +205,9 @@ public class Note {
     }
 
     /**
-     * Gets a defensive copy of the logs list for this note.
+     * Gets a tag list for this note.
      *
-     * @return A new ArrayList containing the log entries
+     * @return A new ArrayList containing the tag entries
      */
 
     public List<String> getTags() {

@@ -2,5 +2,5 @@ new -t test1 -b hello1
 new -t test2 -b hello2
 new -t test3 -b hello3
 list
-find hello
+find-note-by-body hello
 bye

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 import seedu.zettel.Note;
 import seedu.zettel.UI;
@@ -19,8 +18,6 @@ import seedu.zettel.storage.Storage;
  * Also cleans up all links to and from the deleted note.
  */
 public class DeleteNoteCommand extends Command {
-    private static final Logger logger = Logger.getLogger(DeleteNoteCommand.class.getName());
-
     private final String noteId;
     private final boolean isForce;
 
@@ -82,7 +79,6 @@ public class DeleteNoteCommand extends Command {
 
             notes.remove(note);
             storage.save(notes);
-            logger.info("Note " + note.getTitle() + ", id " + noteId + " deleted.");
             ui.showNoteDeleted(noteId);
         } else {
             ui.showDeletionCancelled();

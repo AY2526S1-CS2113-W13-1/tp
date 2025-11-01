@@ -10,6 +10,7 @@ import java.util.concurrent.TimeoutException;
 
 import seedu.zettel.commands.Command;
 import seedu.zettel.exceptions.ZettelException;
+import seedu.zettel.parser.Parser;
 import seedu.zettel.storage.Storage;
 
 /**

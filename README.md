@@ -1,66 +1,150 @@
-# Duke project template
+# Zettel
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+Zettel is a **desktop Command Line Interface (CLI) application** for managing a personal Zettelkasten note-taking system. It's optimized for users who prefer keyboard commands, allowing you to efficiently build and navigate a knowledge base through your keyboard.
 
-## Setting up in Intellij
+## Features
 
-Prerequisites: JDK 17 (use the exact version), update Intellij to the most recent version.
+- **Multiple repositories**: Create and switch between different note repositories
+- **Note management**: Create, edit, delete, and search notes with unique IDs
+- **Organization**: Pin important notes, archive old ones, and tag notes for categorization
+- **Linking**: Create one-way or bidirectional links between notes to build a knowledge graph
+- **Tags**: Global tag management with rename and delete operations
+- **Search**: Find notes by content or metadata
 
-1. **Ensure Intellij JDK 17 is defined as an SDK**, as described [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk) -- this step is not needed if you have used JDK 17 in a previous Intellij project.
-1. **Import the project _as a Gradle project_**, as described [here](https://se-education.org/guides/tutorials/intellijImportGradleProject.html).
-1. **Verify the setup**: After the importing is complete, locate the `src/main/java/seedu/duke/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:
-   ```
-   > Task :compileJava
-   > Task :processResources NO-SOURCE
-   > Task :classes
-   
-   > Task :Duke.main()
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   
-   What is your name?
-   ```
-   Type some word and press enter to let the execution proceed to the end.
+## Quick Start
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+### Prerequisites
+- **JDK 17** (use the exact version)
+- Gradle (included via wrapper)
 
-## Build automation using Gradle
+### Setup in IntelliJ IDEA
 
-* This project uses Gradle for build automation and dependency management. It includes a basic build script as well (i.e. the `build.gradle` file).
-* If you are new to Gradle, refer to the [Gradle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/gradle.html).
+1. **Ensure JDK 17 is configured** as described [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk)
+2. **Import the project as a Gradle project** as described [here](https://se-education.org/guides/tutorials/intellijImportGradleProject.html)
+3. **Verify setup**: Locate `src/main/java/seedu/zettel/Zettel.java`, right-click and choose `Run Zettel.main()`
+
+### Running the Application
+
+Build and run using Gradle:
+
+```sh
+./gradlew build
+./gradlew run
+```
+
+Or on Windows:
+
+```sh
+gradlew.bat build
+gradlew.bat run
+```
+
+## Usage Examples
+
+```sh
+# Initialize a new repository
+init my_notes
+
+# Create a note
+new -t "First Note" -b "This is my first note"
+
+# List all notes
+list
+
+# Pin a note
+pin a1b2c3d4
+
+# Add tags
+new-tag important
+add-tag a1b2c3d4 important
+
+# Link notes together
+link a1b2c3d4 e5f6g7h8
+
+# Search for notes
+find "keyword"
+```
+
+For detailed command documentation, see the [User Guide](docs/UserGuide.md).
+
+**Note:** Keep the `src\main\java` folder as the root folder for Java files, as this is the default location some tools (e.g., Gradle) expect to find Java files.
 
 ## Testing
 
-### I/O redirection tests
+### JUnit Tests
 
-* To run _I/O redirection_ tests (aka _Text UI tests_), navigate to the `text-ui-test` and run the `runtest(.bat/.sh)` script.
+Run automated tests:
 
-### JUnit tests
+```sh
+./gradlew test
+```
 
-* A skeleton JUnit test (`src/test/java/seedu/duke/DukeTest.java`) is provided with this project template. 
-* If you are new to JUnit, refer to the [JUnit Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/junit.html).
+Or on Windows:
 
-## Checkstyle
+```sh
+gradlew.bat test
+```
 
-* A sample CheckStyle rule configuration is provided in this project.
-* If you are new to Checkstyle, refer to the [Checkstyle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/checkstyle.html).
+### Text UI Tests
 
-## CI using GitHub Actions
+Run I/O redirection tests:
 
-The project uses [GitHub actions](https://github.com/features/actions) for CI. When you push a commit to this repo or PR against it, GitHub actions will run automatically to build and verify the code as updated by the commit/PR.
+```sh
+cd text-ui-test
+./runtest.sh        # Linux/Mac
+runtest.bat         # Windows
+```
+
+## Code Quality
+
+This project uses:
+- **Gradle** for build automation and dependency management (see `build.gradle`)
+- **Checkstyle** for code style enforcement (configuration in `config/checkstyle/`)
+- **GitHub Actions** for continuous integration
+
+Run Checkstyle locally:
+
+```sh
+./gradlew checkstyleMain checkstyleTest
+```
+
+If you are new to these tools:
+- [Gradle Tutorial](https://se-education.org/guides/tutorials/gradle.html)
+- [JUnit Tutorial](https://se-education.org/guides/tutorials/junit.html)
+- [Checkstyle Tutorial](https://se-education.org/guides/tutorials/checkstyle.html)
 
 ## Documentation
 
-`/docs` folder contains a skeleton version of the project documentation.
+Full documentation is available in the [`docs/`](docs/) folder:
 
-Steps for publishing documentation to the public: 
-1. If you are using this project template for an individual project, go your fork on GitHub.<br>
-   If you are using this project template for a team project, go to the team fork on GitHub.
-1. Click on the `settings` tab.
-1. Scroll down to the `GitHub Pages` section.
-1. Set the `source` as `master branch /docs folder`.
-1. Optionally, use the `choose a theme` button to choose a theme for your documentation.
+- [User Guide](docs/UserGuide.md) - Complete command reference and usage instructions
+- [Developer Guide](docs/DeveloperGuide.md) - Architecture and implementation details
+- [About Us](docs/AboutUs.md) - Team information
+
+## Project Structure
+
+```
+src/main/java/seedu/zettel/
+├── commands/          # All command implementations
+├── storage/           # File I/O and repository management
+├── exceptions/        # Custom exceptions
+├── util/              # Utility classes
+├── Note.java          # Note data structure
+├── UI.java            # User interface handling
+├── Parser.java        # Command parsing
+└── Zettel.java        # Main application class
+```
+
+## Contributing
+
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for the list of contributors.
+
+When contributing:
+1. Follow the existing code style (enforced by Checkstyle)
+2. Add tests for new features
+3. Run `./gradlew check` before submitting PRs
+4. Update relevant documentation
+
+## Acknowledgments
+
+This project is based on the Duke project template for CS2113 at the National University of Singapore.

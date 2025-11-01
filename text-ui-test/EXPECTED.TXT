@@ -26,10 +26,11 @@ ____________________________________________________________
    delete-tag [-f] <note-id> <tag>   - Delete a tag from a note
    delete-tag-globally [-f] <tag>    - Delete a tag from all notes
    rename-tag <old-tag> <new-tag>    - Rename a tag globally
-   archive <note-id>               - Moves note to archive folder
-   unarchive <note-id>             - Moves note out of archive folder
-   print-body <note-id>            - Print the body of a note
-   find <text>                       - Search for notes
+   archive <note-id>                 - Moves note to archive folder
+   unarchive <note-id>               - Moves note out of archive folder
+   print-body <note-id>              - Print the body of a note
+   find-note-by-body <search-terms>  - Search for notes by body content
+   find-note-by-title <search-terms> - Search for notes by title
    help                              - Show this list of commands
    bye                               - Exit the application
 
@@ -44,8 +45,7 @@ You have 3 notes:
     1. test3.txt 2025-10-30 b09d6cd3
     2. test2.txt 2025-10-30 3fc6da0d
     3. test1.txt 2025-10-30 35413cb9
-____________________________________________________________
-Here are the matching notes in your list:
+ Here are the notes with bodies matching the above:
  1. test3.txt 2025-10-30 b09d6cd3
  2. test2.txt 2025-10-30 3fc6da0d
  3. test1.txt 2025-10-30 35413cb9
