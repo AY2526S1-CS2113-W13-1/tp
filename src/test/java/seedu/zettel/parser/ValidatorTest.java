@@ -332,4 +332,78 @@ class ValidatorTest {
         String boundaryInput = "x".repeat(199) + "y";
         assertDoesNotThrow(() -> Validator.validateRepoTitleTag(boundaryInput, "Title"));
     }
+
+    // ==================== Repo Name Validation Tests ====================
+
+    @Test
+    void validateRepoName_nullInput_doesNotThrow() {
+        assertDoesNotThrow(() -> Validator.validateRepoName(null, "Repo name"));
+    }
+
+    @Test
+    void validateRepoName_validAlphanumeric_doesNotThrow() {
+        assertDoesNotThrow(() -> Validator.validateRepoName("MyRepo123", "Repo name"));
+    }
+
+    @Test
+    void validateRepoName_validWithHyphen_doesNotThrow() {
+        assertDoesNotThrow(() -> Validator.validateRepoName("my-repo", "Repo name"));
+    }
+
+    @Test
+    void validateRepoName_validWithUnderscore_doesNotThrow() {
+        assertDoesNotThrow(() -> Validator.validateRepoName("my_repo", "Repo name"));
+    }
+
+    @Test
+    void validateRepoName_mixedCaseAndSymbols_doesNotThrow() {
+        assertDoesNotThrow(() -> Validator.validateRepoName("My_Repo-01", "Repo name"));
+    }
+
+    @Test
+    void validateRepoName_withSpaces_throwsInvalidFormatException() {
+        Exception exception = assertThrows(InvalidFormatException.class, () -> {
+            Validator.validateRepoName("my repo", "Repo name");
+        });
+        assertTrue(exception.getMessage().contains("Repo name contains invalid characters"));
+    }
+
+    @Test
+    void validateRepoName_withSpecialCharacters_throwsInvalidFormatException() {
+        Exception exception = assertThrows(InvalidFormatException.class, () -> {
+            Validator.validateRepoName("repo!", "Repo name");
+        });
+        assertTrue(exception.getMessage().contains("Repo name contains invalid characters"));
+    }
+
+    @Test
+    void validateRepoName_withDots_throwsInvalidFormatException() {
+        Exception exception = assertThrows(InvalidFormatException.class, () -> {
+            Validator.validateRepoName("my.repo", "Repo name");
+        });
+        assertTrue(exception.getMessage().contains("Repo name contains invalid characters"));
+    }
+
+    @Test
+    void validateRepoName_withComma_throwsInvalidFormatException() {
+        Exception exception = assertThrows(InvalidFormatException.class, () -> {
+            Validator.validateRepoName("my,repo", "Repo name");
+        });
+        assertTrue(exception.getMessage().contains("Repo name contains invalid characters"));
+    }
+
+    @Test
+    void validateRepoName_exceedsMaxLength_throwsLengthExceedException() {
+        String longName = "a".repeat(201);
+        Exception exception = assertThrows(LengthExceedException.class, () -> {
+            Validator.validateRepoName(longName, "Repo name");
+        });
+        assertTrue(exception.getMessage().contains("Repo name must be less than"));
+    }
+
+    @Test
+    void validateRepoName_exactlyMaxLength_doesNotThrow() {
+        String exactMax = "a".repeat(200);
+        assertDoesNotThrow(() -> Validator.validateRepoName(exactMax, "Repo name"));
+    }
 }

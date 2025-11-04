@@ -46,7 +46,7 @@ PRs include
 I contributed to the DG in the form of the UML Diagrams. These includes class diagrams, and sequence diagrams. 
 Attached below are some of the diagrams I added.
 
-![](../images/Architecture.png)
-![](../images/ArchitectureSequence.png)
-![](../images/CommandAbstractClass.png)
-![](../images/NoteManagementCommands.png)
+![](../images/Architecture.svg)
+![](../images/EditorIntegrationSequence.svg)
+![](../images/CommandAbstractClass.svg)
+![](../images/NoteManagementCommands.svg)

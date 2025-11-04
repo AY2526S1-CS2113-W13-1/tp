@@ -23,6 +23,8 @@ public class Validator {
             "Input contains invalid characters. Only ASCII characters are allowed;";
     private static final String REPO_TITLE_TAG_INVALID_CHARS_FORMAT =
             " contains invalid characters. Only alphanumeric characters and space are allowed;";
+    private static final String REPO_TITLE_FORMAT =
+            " contains invalid characters. Only alphanumeric characters, underscores (_), and hyphens (-) are allowed.";
     private static final String PIPE_CHAR_ERROR = "Invalid character '|' detected in input!";
     private static final String REPO_TITLE_TAG_TOO_LONG =
             " must be less than " + MAX_REPO_TITLE_TAG_LENGTH + " characters.";
@@ -91,5 +93,20 @@ public class Validator {
             throw new InvalidFormatException(actionName + REPO_TITLE_TAG_INVALID_CHARS_FORMAT);
         }
 
+    }
+
+    public static void validateRepoName(String input, String actionName) throws ZettelException {
+        if (input == null) {
+            return;
+        }
+
+        if (input.length() > MAX_REPO_TITLE_TAG_LENGTH) {
+            throw new LengthExceedException(actionName + REPO_TITLE_TAG_TOO_LONG);
+        }
+
+        // Allow only alphanumeric, underscore (_), and hyphen (-)
+        if (!input.matches("^[a-zA-Z0-9_-]+$")) {
+            throw new InvalidFormatException(actionName + REPO_TITLE_FORMAT);
+        }
     }
 }

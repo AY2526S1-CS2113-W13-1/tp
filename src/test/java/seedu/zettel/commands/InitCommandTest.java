@@ -47,12 +47,19 @@ public class InitCommandTest {
     }
 
     @Test
-    void testNewRepoInitShowsCreatedMessage() {
+    void testNewRepoInitShowsCreatedMessage() throws ZettelException {
         String repoName = "myRepo";
-        ui.showRepoInit(repoName);
 
-        String output = outputStream.toString().trim();
-        assertTrue(output.contains("Repository /" + repoName + " has been created."));
+        // Execute the actual command
+        InitCommand command = new InitCommand(repoName);
+        command.execute(notes, tags, ui, storage);
+
+        // Capture console output
+        String output = outputStream.toString().trim().toLowerCase();
+
+        // Assert output message contains expected text (case-insensitive)
+        assertTrue(output.contains("repository /" + repoName.toLowerCase() + " has been created."),
+                "Expected creation message not found. Output was:\n" + output);
     }
 
     @Test

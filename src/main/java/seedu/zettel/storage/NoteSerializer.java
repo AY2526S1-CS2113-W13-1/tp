@@ -52,6 +52,7 @@ public class NoteSerializer {
         Files.write(indexPath, lines);
     }
 
+    //@@author gordonajajar
     public List<String> getExpectedFilenames(Path indexPath) {
         List<String> expectedFiles = new ArrayList<>();
 
@@ -105,6 +106,7 @@ public class NoteSerializer {
         }
         return note;
     }
+    //@@author
 
     private String toIndexFormat(Note note) {
         // Filter and clean tags - remove null/empty entries

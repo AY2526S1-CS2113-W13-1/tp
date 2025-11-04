@@ -24,7 +24,7 @@ public class ChangeRepoCommand extends Command {
      */
     public ChangeRepoCommand(String repoName) {
         assert repoName != null : "Repo name should not be null.";
-        this.repoName = repoName;
+        this.repoName = repoName.toLowerCase();
     }
 
     /**

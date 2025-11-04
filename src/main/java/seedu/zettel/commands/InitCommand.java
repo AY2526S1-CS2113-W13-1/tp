@@ -48,6 +48,6 @@ public class InitCommand extends Command {
             throw new InvalidRepoException("This repo already exists.");
         }
         storage.createRepo(repoName.toLowerCase());
-        ui.showRepoInit(repoName);
+        ui.showRepoInit(repoName.toLowerCase());
     }
 }

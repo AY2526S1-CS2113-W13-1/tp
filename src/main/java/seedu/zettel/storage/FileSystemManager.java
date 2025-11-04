@@ -151,6 +151,7 @@ public class FileSystemManager {
     }
 
 
+    //@@author gordonajajar
     /**
      * Creates the directory structure for a new repository.
      *
@@ -251,6 +252,7 @@ public class FileSystemManager {
         detectOrphans(notesDir, expectedInNotes, repoName);
         detectOrphans(archiveDir, expectedInArchive, repoName);
     }
+    //@@author
 
     /**
      * Ensures that the global tags file exists in the root directory.
@@ -272,6 +274,7 @@ public class FileSystemManager {
         }
     }
 
+    //@@author gordonajajar
     /**
      * Creates a file or directory if it doesn't exist.
      *
@@ -320,6 +323,7 @@ public class FileSystemManager {
             System.out.println("Failed to scan notes directory for orphans: " + e.getMessage());
         }
     }
+    //@@author
 
     /**
      * Gets the path to the index file for the specified repository.

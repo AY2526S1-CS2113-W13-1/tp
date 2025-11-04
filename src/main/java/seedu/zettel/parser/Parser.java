@@ -212,7 +212,7 @@ public class Parser {
             throw new EmptyDescriptionException(INIT_EMPTY);
         }
 
-        Validator.validateRepoTitleTag(content,"Repo name");
+        Validator.validateRepoName(content,"Repo name");
         return new InitCommand(content);
     }
 

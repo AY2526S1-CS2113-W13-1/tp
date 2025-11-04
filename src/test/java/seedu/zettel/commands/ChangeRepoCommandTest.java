@@ -39,18 +39,18 @@ public class ChangeRepoCommandTest {
         tags = new ArrayList<>();
 
         storage.createRepo("main");
-        storage.createRepo("projectX");
+        storage.createRepo("projectx");
         storage.loadConfig();
     }
 
     @Test
     void execute_validRepo_switchesSuccessfully() {
-        ChangeRepoCommand cmd = new ChangeRepoCommand("projectX");
+        ChangeRepoCommand cmd = new ChangeRepoCommand("projectx");
 
         assertDoesNotThrow(() -> cmd.execute(notes, tags, ui, storage));
 
         String currentRepo = storage.readCurrRepo();
-        assertEquals("projectX", currentRepo, "Expected repo to switch to 'projectX'");
+        assertEquals("projectx", currentRepo, "Expected repo to switch to 'projectX'");
     }
 
     @Test
@@ -68,13 +68,13 @@ public class ChangeRepoCommandTest {
 
     @Test
     void execute_validRepo_reloadsNotesAndTags() throws ZettelException {
-        storage.createRepo("dataRepo");
+        storage.createRepo("datarepo");
         storage.loadConfig();
 
         notes.add(new Note("123", "title", "file.txt", "body", null, null));
         tags.add("java");
 
-        ChangeRepoCommand cmd = new ChangeRepoCommand("dataRepo");
+        ChangeRepoCommand cmd = new ChangeRepoCommand("datarepo");
         cmd.execute(notes, tags, ui, storage);
 
         assertTrue(notes.isEmpty(), "Notes list should be cleared and reloaded");
@@ -83,10 +83,10 @@ public class ChangeRepoCommandTest {
 
     @Test
     void execute_sameRepo_throwsInvalidRepoException() {
-        ChangeRepoCommand switchCmd = new ChangeRepoCommand("projectX");
+        ChangeRepoCommand switchCmd = new ChangeRepoCommand("projectx");
         assertDoesNotThrow(() -> switchCmd.execute(notes, tags, ui, storage));
 
-        ChangeRepoCommand sameCCmd = new ChangeRepoCommand("projectX");
+        ChangeRepoCommand sameCCmd = new ChangeRepoCommand("projectx");
 
         InvalidRepoException ex = assertThrows(
                 InvalidRepoException.class,
@@ -94,6 +94,6 @@ public class ChangeRepoCommandTest {
         );
 
         assertTrue(ex.getMessage().contains("Already on"));
-        assertTrue(ex.getMessage().contains("projectX"));
+        assertTrue(ex.getMessage().contains("projectx"));
     }
 }

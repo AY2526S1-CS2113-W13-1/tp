@@ -26,7 +26,9 @@
 #### Contributions to DG
 
 - Wrote implementation details for storage, note creation, linking, archiving, and editor integration.
-- Added UML diagrams for Storage and Note components.
+- Added some sequence UML diagrams:
+![](../images/ArchitectureSequence.svg)
+![](../images/ParserSequence.svg)
 
 #### Contributions to Team-Based Tasks
 
@@ -46,3 +48,5 @@
 
 - Used Java NIO for robust file system operations.
 - Leveraged external editors via `$EDITOR` / `$VISUAL` environment variables for note editing.
+
+
