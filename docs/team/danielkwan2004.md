@@ -2,9 +2,7 @@
 
 ## Overview
 
-ZettelCLI is a command-line Zettelkasten app for managing a personal knowledge base with speed and precision. It focuses on keyboard-first workflows such as creating, linking, tagging, filtering, and searching notes, with opinionated command formats and clear, consistent outputs.
-
-My primary contributions centered on user-facing features for linking, pinning, finding and deleting, robust parsing and confirmation flows, and documentation that clearly explains formats and expected outputs.
+ZettelCLI is a command-line Zettelkasten app for managing a personal knowledge base with speed and precision. It focuses on keyboard-first workflows such as creating, linking, tagging, filtering, and searching notes, with opinionated command formats and clear, consistent outputs. My primary contributions centered on user-facing features for linking, pinning, finding and deleting, robust parsing and confirmation flows, and documentation that clearly explains formats and expected outputs.
 
 ## Summary of Contributions
 
@@ -39,16 +37,12 @@ My primary contributions centered on user-facing features for linking, pinning, 
 	- Tracked feature progress and ensured timely completion of deliverables for each iteration.
 - **Code Review and Quality Assurance**
 	- Reviewed the majority of pull requests throughout v2.0 and v2.1, providing detailed feedback on code quality, design consistency, and potential bugs.
-	- Caught and resolved numerous critical issues in PRs before merging, including incorrect error handling, inconsistent command formats, and storage serialization bugs.
     - Notable team PR reviews: https://github.com/AY2526S1-CS2113-W13-1/tp/pull/109 and https://github.com/AY2526S1-CS2113-W13-1/tp/pull/216
 - **Code Contributions**
 	- Implemented the largest number of features among team members, covering tagging, linking, searching, and deletion workflows.
 	- Wrote the most lines of functional code due to the breadth and depth of implemented features, including complex bidirectional linking logic and global tag management.
 - **Additional Support**
 	- Completed the entirety of another team member's assigned work during v2.0 due to their unavailability, effectively handling two people's workload to ensure the iteration deadline was met.
-- **Documentation Standardization**
-	- Wrote Javadoc where necessary and refactored code to maintain a consistent style across the codebase (e.g., command message formats, parser validation messages, and UI output harmonization).
-	- Ensured all implemented features were properly documented in both the User Guide and Developer Guide with clear examples and expected outputs.
 
 ### Notable Design/Implementation Highlights
 - Parser consistency: standardized flag handling (`-p`, `-a`, `-f`) and error messages; added specific format strings to improve user feedback and testability.
@@ -59,7 +53,6 @@ My primary contributions centered on user-facing features for linking, pinning, 
 - **Bug Reporting**
 	- Reported a total of 16 unique bugs during the Practical Exam Dry Run (PE-D), helping other teams identify and fix critical issues in their applications. https://github.com/nus-cs2113-AY2526S1/ped-danielkwan2004
 	- Provided detailed reproduction steps and suggestions for fixes, contributing to the overall quality of peer projects.
-
 
 ### Documentation
 - User Guide (UG)
