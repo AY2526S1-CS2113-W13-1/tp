@@ -342,7 +342,7 @@ delete e0e7b989
 **Expected Output:**
 
 ```
- Confirm deletion on 'New_Note', noteID e0e7b989? press y to confirm, any other key to cancel
+ Confirm deletion on 'New_Note', noteID e0e7b989? Press y/Y to confirm, any other key to cancel
 > y
  Note at e0e7b989 deleted
 ```
@@ -634,7 +634,7 @@ delete-tag e0e7b989 important
 
 **Expected Output:**
 ```
- Confirm deletion of tag 'important' on note # 'e0e7b989'? press y to confirm, any other key to cancel
+ Confirm deletion of tag 'important' on note # 'e0e7b989'? Press y/Y to confirm, any other key to cancel
 > y
  Tag 'important' has been deleted from note #e0e7b989.
 ```
@@ -668,7 +668,7 @@ delete-tag-globally important
 
 **Expected Output:**
 ```
- Confirm deletion of tag 'important'? press y to confirm, any other key to cancel
+ Confirm deletion of tag 'important'? Press y/Y to confirm, any other key to cancel
 > y
  Tag 'important' has been deleted across all notes, globally.
 ```

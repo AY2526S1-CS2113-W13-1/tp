@@ -112,7 +112,7 @@ public class UI {
      */
     public void showDeleteNoteConfirmation(String id, String noteTitle) {
         System.out.println("Confirm deletion on '" + noteTitle + "', noteID " + id + 
-                "? press y to confirm, any other key to cancel");
+                "? Press y/Y to confirm, any other key to cancel");
     }
 
     /**
@@ -121,7 +121,7 @@ public class UI {
      * @param tag The tag to delete.
      */
     public void showDeleteTagConfirmation(String tag) {
-        System.out.println("Confirm deletion of tag '" + tag + "'? press y to confirm, any other key to cancel");
+        System.out.println("Confirm deletion of tag '" + tag + "'? Press y/Y to confirm, any other key to cancel");
     }
 
     /**
@@ -132,7 +132,7 @@ public class UI {
      */
     public void showDeleteTagFromNoteConfirmation(String tag, String noteId) {
         System.out.println("Confirm deletion of tag '" + tag + "' on note # '" + noteId + 
-                "'? press y to confirm, any other key to cancel");
+                "'? Press y/Y to confirm, any other key to cancel");
     }
 
 

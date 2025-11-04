@@ -22,7 +22,7 @@ public class Validator {
     private static final String INVALID_CHARS_FORMAT =
             "Input contains invalid characters. Only ASCII characters are allowed;";
     private static final String REPO_TITLE_TAG_INVALID_CHARS_FORMAT =
-            " contains invalid characters. Only alphanumeric characters and space are allowed;";
+            " contains invalid characters. Only alphanumeric characters and space are allowed.";
     private static final String REPO_TITLE_FORMAT =
             " contains invalid characters. Only alphanumeric characters, underscores (_), and hyphens (-) are allowed.";
     private static final String PIPE_CHAR_ERROR = "Invalid character '|' detected in input!";

@@ -246,7 +246,7 @@ public class DeleteTagFromNoteCommandTest {
         cmd.execute(notes, tags, ui, storage);
 
         String output = outputStream.toString();
-        assertTrue(output.contains("Confirm deletion of tag 'java' on note # 'abcd1234'? press y to confirm, " 
+        assertTrue(output.contains("Confirm deletion of tag 'java' on note # 'abcd1234'? Press y/Y to confirm, "
                 + "any other key to cancel"));
         assertTrue(output.contains("Tag 'java' has been deleted from note #abcd1234."));
         assertFalse(note1.getTags().contains("java"));
@@ -262,7 +262,7 @@ public class DeleteTagFromNoteCommandTest {
         cmd.execute(notes, tags, ui, storage);
 
         String output = outputStream.toString();
-        assertTrue(output.contains("Confirm deletion of tag 'java' on note # 'abcd1234'? press y to confirm, "
+        assertTrue(output.contains("Confirm deletion of tag 'java' on note # 'abcd1234'? Press y/Y to confirm, "
                 + "any other key to cancel"));
         assertTrue(output.contains("Deletion cancelled"));
         assertTrue(note1.getTags().contains("java"));
