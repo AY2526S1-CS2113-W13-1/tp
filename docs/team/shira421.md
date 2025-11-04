@@ -15,7 +15,7 @@ Zettel is a lightweight, file-based note-taking system inspired by the Zettelkas
 - Added corresponding support in the **`UI`** and **`Parser`** classes to integrate the help feature cleanly into the command flow.
 - Ensured the help output dynamically reflects the full range of supported commands, improving usability and discoverability.
 - See my contributions via RepoSense:  
-  [RepoSense Link](https://nus-cs2113-ay2526s1.github.io/tp-dashboard/?search=JianHao24&breakdown=true)
+  [RepoSense Link](https://nus-cs2113-ay2526s1.github.io/tp-dashboard/?search=shira421&breakdown=true)
 
 ### **Test Coverage Contributions**
 - Unit Tests for **`Zettel`**, **`Note`**, **`HelpCommand`** classes.
